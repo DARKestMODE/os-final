@@ -67,6 +67,7 @@
             </c:if>
         </c:forEach>
     </div>
+    <a href="/clockServlet">clock</a>
 </div>
 
 <script>
