@@ -8,23 +8,26 @@
             integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <title>Clock</title>
     <style>
-        .container {
-            margin-top: 5vh;
-        }
         .center {
-            height: 80vh;
+            height: 60vh;
         }
         .one, .two, .three {
-            height: 20vh;
-            margin-bottom: 10vh;
+            height: 16vh;
+            margin-bottom: 6vh;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="row justify-content-center">
+            <div class="col text-center">
+                <h1 class="display-1">Clock</h1>
+            </div>
+        </div>
+        <br>
         <div class="row align-items-center">
-            <div class="col-2 text-center">
-                <div class="sequence">
+            <div class="col-1 offset-1 text-center">
+                <div class="sequence border border-dark">
                     <c:forEach items="${requestScope.accessSequence}" var="label" varStatus="indices">
                         <c:if test="${requestScope.index == indices.index}">
                             <h2 style="color: red"><c:out value="${label}"/></h2>
@@ -36,7 +39,7 @@
                 </div>
             </div>
 
-            <div class="col-8 border border-primary rounded-circle center">
+            <div class="col-6 offset-1 border border-primary rounded-circle center">
                 <div class="row one">
                     <div class="col text-center">
                         <div>
@@ -46,8 +49,7 @@
                         <c:if test="${requestScope.clockIndex != 0}">
                             <h1>
                         </c:if>
-                                <span><c:out value="${requestScope.buffer[0].label}"/></span>|
-                                <span><c:out value="${requestScope.buffer[0].reference}"/></span>
+                                <span><c:out value="${requestScope.buffer[0].label}"/></span>|<span><c:out value="${requestScope.buffer[0].reference}"/></span>
                             </h1>
                         </div>
                     </div>
@@ -61,9 +63,24 @@
                             <c:if test="${requestScope.clockIndex != 3}">
                                 <h1>
                             </c:if>
-                                <span><c:out value="${requestScope.buffer[3].label}"/></span>|
-                                <span><c:out value="${requestScope.buffer[3].reference}"/></span>
+                                <span><c:out value="${requestScope.buffer[3].label}"/></span>|<span><c:out value="${requestScope.buffer[3].reference}"/></span>
                             </h1>
+                        </div>
+                    </div>
+                    <div class="col d-flex justify-content-center">
+                        <div>
+                            <c:if test="${requestScope.clockIndex == 0}">
+                                <img src="arrow.png" width="100" height="20" style="transform: rotate(-90deg)">
+                            </c:if>
+                            <c:if test="${requestScope.clockIndex == 1}">
+                                <img src="arrow.png" width="100" height="20">
+                            </c:if>
+                            <c:if test="${requestScope.clockIndex == 2}">
+                                <img src="arrow.png" width="100" height="20" style="transform: rotate(90deg)">
+                            </c:if>
+                            <c:if test="${requestScope.clockIndex == 3}">
+                                <img src="arrow.png" width="100" height="20" style="transform: rotate(180deg)">
+                            </c:if>
                         </div>
                     </div>
                     <div class="col d-flex justify-content-end">
@@ -74,8 +91,7 @@
                             <c:if test="${requestScope.clockIndex != 1}">
                                 <h1>
                             </c:if>
-                                <span><c:out value="${requestScope.buffer[1].label}"/></span>|
-                                <span><c:out value="${requestScope.buffer[1].reference}"/></span>
+                                <span><c:out value="${requestScope.buffer[1].label}"/></span>|<span><c:out value="${requestScope.buffer[1].reference}"/></span>
                             </h1>
                         </div>
                     </div>
@@ -89,24 +105,28 @@
                             <c:if test="${requestScope.clockIndex != 2}">
                                 <h1>
                             </c:if>
-                                <span><c:out value="${requestScope.buffer[2].label}"/></span>|
-                                <span><c:out value="${requestScope.buffer[2].reference}"/></span>
+                                <span><c:out value="${requestScope.buffer[2].label}"/></span>|<span><c:out value="${requestScope.buffer[2].reference}"/></span>
                             </h1>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-2 text-center">
-                <div class="sequence">
+            <div class="col-1 offset-1 text-center">
+                <div class="sequence border border-dark">
                     <c:forEach items="${requestScope.labels}" var="label" varStatus="indices">
                         <h2><c:out value="${label}"/></h2>
                     </c:forEach>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-2 offset-5">
-                <button class="btn btn-primary" id="btn-clock">Next</button>
+        <div class="row justify-content-center">
+            <div class="col-2 text-center p-2">
+                <button class="btn btn-primary p-2" id="btn-clock">Next</button>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-2 text-center p-2">
+                <a href="/bestFitServlet" class="btn btn-link p-2">Best fit</a>
             </div>
         </div>
     </div>

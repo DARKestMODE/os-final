@@ -25,7 +25,13 @@ public class ClockServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        clock.algorithm();
+        if (clock.getAccessSequence().size() == Clock.getIndex()) {
+            clock.setAccessSequence();
+            Clock.setIndex();
+            request.setAttribute("accessSequence", clock.getAccessSequence());
+        } else {
+            clock.algorithm();
+        }
         response.getWriter().write("True");
     }
 }

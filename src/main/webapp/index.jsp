@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Main page</title>
+    <title>Best fit</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.js"
@@ -23,21 +23,25 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-4 offset-4">
-            <h1>Best-fit</h1>
-            <a href="/bestFitServlet">get blocks</a>
+        <div class="col-4 offset-4 text-center">
+            <h1 class="display-1">Best-fit</h1>
+            <a href="/bestFitServlet">Get blocks</a>
             <br>
             <form method="post" action="/bestFitServlet">
                 <div class="form-group">
                     <label for="size">Enter process size</label>
                     <input type="text" class="form-control" id="size" name="block">
                 </div>
-                <button type="button" class="btn btn-primary" id="btn-generate">Generate</button>
-                <button type="button" class="btn btn-primary" id="btn-next">Next</button>
-                <button type="button" class="btn btn-primary" id="btn-reset">Reset</button>
+                <div class="d-flex justify-content-around">
+                    <button type="button" class="btn btn-primary" id="btn-generate">Generate</button>
+                    <button type="button" class="btn btn-primary" id="btn-next">Next</button>
+                    <button type="button" class="btn btn-primary" id="btn-reset">Reset</button>
+                </div>
             </form>
             <br>
-            <div id="generatedBlock" style="height: 50px; width: 0; background-color: purple"></div>
+            <div class="d-flex justify-content-center">
+                <div id="generatedBlock" style="height: 50px; width: 0; background-color: purple"></div>
+            </div>
         </div>
     </div>
     <br>
@@ -67,9 +71,13 @@
             </c:if>
         </c:forEach>
     </div>
-    <a href="/clockServlet">clock</a>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col text-center">
+            <a href="/clockServlet" class="btn btn-link p-2">Clock</a>
+        </div>
+    </div>
 </div>
-
 <script>
     $(document).ready(function () {
         $('#btn-generate').click(function () {
@@ -115,7 +123,6 @@
                 }
             })
         })
-
     })
 </script>
 </body>

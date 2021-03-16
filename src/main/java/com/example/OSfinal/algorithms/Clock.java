@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Clock {
     private List<String> labels = new ArrayList<>();
-    private List<String> accessSequence = new ArrayList<>();
+    private List<String> accessSequence;
     private List<Frame> buffer = new ArrayList<>();
     private static int index = 0;
     private static int clockIndex = 0;
@@ -29,6 +29,7 @@ public class Clock {
     }
 
     public void setAccessSequence() {
+        accessSequence = new ArrayList<>();
         Random r = new Random();
         for (int i = 0; i < 10; i++) {
             String label = labels.get(r.nextInt(labels.size()));
@@ -115,6 +116,10 @@ public class Clock {
 
     public static Integer getIndex() {
         return index;
+    }
+
+    public static void setIndex() {
+        index = 0;
     }
 
     public static Integer getClockIndex() {
